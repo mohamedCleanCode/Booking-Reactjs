@@ -2,7 +2,9 @@ import { format } from "date-fns";
 import { useState } from "react";
 import { DateRange } from "react-date-range";
 import { useLocation } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import MailList from "../../components/mailList/MailList";
 import Navbar from "../../components/navbar/Navbar";
 import SearchItem from "../../components/searchItem/SearchItem";
 import "./hotels.css";
@@ -98,6 +100,17 @@ const List = () => {
             <SearchItem />
           </div>
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "30px",
+        }}
+      >
+        <MailList />
+        <Footer />
       </div>
     </div>
   );
