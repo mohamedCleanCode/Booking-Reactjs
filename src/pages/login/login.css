@@ -1,0 +1,28 @@
+.login_page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.l_form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.l_input {
+  border-radius: 12px;
+  padding: 15px 30px;
+  border: 2px solid #eee;
+}
+.l_button {
+  padding: 15px 30px;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+}
+:focus {
+  outline: none;
+}

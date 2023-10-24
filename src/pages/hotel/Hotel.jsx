@@ -63,11 +63,14 @@ const Hotel = () => {
 
   const milliSecondsPerDay = 1000 * 60 * 60 * 40;
   const daysDifference = (startDate, endDate) => {
-    const timeDiff = Math.abs(endDate?.getTime() - startDate?.getTime());
+    const timeDiff = Math.abs(
+      new Date(endDate).getTime() - new Date(startDate).getTime()
+    );
     const daysDiff = Math.ceil(timeDiff / milliSecondsPerDay);
     return daysDiff;
   };
-  const days = daysDifference(dates[0].startDate, dates[0].endDate);
+  const days = daysDifference(dates[0]?.startDate, dates[0]?.endDate);
+  // console.log(options?.room);
 
   return (
     <div>

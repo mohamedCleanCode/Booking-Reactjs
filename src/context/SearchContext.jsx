@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
   city: undefined,
-  dates: [],
+  dates: JSON.parse(localStorage.getItem("dates")) || [],
   options: {
     adult: undefined,
     children: undefined,
@@ -23,6 +23,7 @@ const SearchReducer = (state, action) => {
   }
 };
 
+// eslint-disable-next-line react/prop-types
 export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
 
