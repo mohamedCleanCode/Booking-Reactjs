@@ -6,11 +6,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList";
 import Navbar from "../../components/navbar/Navbar";
+import Reserve from "../../components/reserve/Reserve";
+import { AuthContext } from "../../context/AuthContext";
 import { SearchContext } from "../../context/SearchContext";
 import useFetch from "../../hooks/useFetch";
 import "./hotel.css";
@@ -70,7 +72,20 @@ const Hotel = () => {
     return daysDiff;
   };
   const days = daysDifference(dates[0]?.startDate, dates[0]?.endDate);
-  // console.log(options?.room);
+
+  const navigate = useNavigate();
+
+  const [openModel, setOpenModel] = useState(false);
+
+  const { user } = useContext(AuthContext);
+
+  const handleClick = () => {
+    if (user) {
+      setOpenModel(true);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div>
@@ -142,7 +157,7 @@ const Hotel = () => {
                     <b>${days * data?.cheapestPrice * options.room}</b>({days}
                     nights)
                   </h2>
-                  <button>Reserve or Book Now!</button>
+                  <button onClick={handleClick}>Reserve or Book Now!</button>
                 </div>
               </div>
             </>
@@ -151,6 +166,7 @@ const Hotel = () => {
         <MailList />
         <Footer />
       </div>
+      {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
     </div>
   );
 };
