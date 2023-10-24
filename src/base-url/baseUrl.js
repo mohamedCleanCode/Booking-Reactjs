@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseUrl = axios.create({
-  baseURL: "http://localhost:8800",
+  baseURL: "https://booking-nodejs.vercel.app",
 });
 
 export default baseUrl;

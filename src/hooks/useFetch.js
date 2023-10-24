@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import baseUrl from "../base-url/baseUrl";
 
 const useFetch = (url) => {
   const [data, setData] = useState();
@@ -10,7 +10,7 @@ const useFetch = (url) => {
     const fetch = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:8800" + url);
+        const res = await baseUrl.get(url);
         setData(res.data);
       } catch (err) {
         setErr(err);
@@ -23,7 +23,7 @@ const useFetch = (url) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:8800" + url);
+      const res = await baseUrl.get(url);
       setData(res);
     } catch (err) {
       setErr(err);
