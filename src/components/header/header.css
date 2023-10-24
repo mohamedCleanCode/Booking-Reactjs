@@ -18,6 +18,7 @@
 
 .headerList {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
   margin-bottom: 50px;
 }
@@ -48,7 +49,7 @@
 }
 
 .headerSearch {
-  height: 60px;
+  min-height: 60px;
   background-color: white;
   border: 3px solid #febb02;
   display: flex;
@@ -60,6 +61,13 @@
   bottom: -40px;
   width: 100%;
   max-width: 1024px;
+}
+
+@media (max-width: 767px) {
+  .headerSearch {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .headerIcon {
